@@ -1,16 +1,23 @@
 {
-  "name": "har-modify-replay",
-  "version": "1.0.0",
-  "description": "Replay HAR requests with optional modifications",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "HAR",
-    "replay",
-    "typescript"
-  ],
-  "author": "Giles Roadnight",
-  "license": "MIT"
+    "name": "har-modify-replay",
+    "version": "1.0.0",
+    "description": "Replay HAR requests with optional modifications",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "node bin/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "HAR",
+        "replay",
+        "typescript"
+    ],
+    "author": "Giles Roadnight",
+    "license": "MIT",
+    "dependencies": {
+        "@types/node": "^10.12.5",
+        "rxjs": "^6.3.3",
+        "typescript": "^3.1.6"
+    }
 }
