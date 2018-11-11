@@ -1,6 +1,6 @@
 
 import { loadJson } from "./loaders/json-loader";
-import { HAR } from "./entiies/har";
+import { HAR } from "./entities/har";
 import { getArgs, printHelp } from "./helpers/commandLineArgs";
 
 const args = getArgs();

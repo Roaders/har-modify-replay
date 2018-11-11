@@ -1,5 +1,5 @@
 
-import { HAR } from "../entiies/har";
+import { HAR } from "../entities/har";
 import { Observable, bindNodeCallback } from "rxjs";
 import { map } from "rxjs/operators";
 import { readFile } from "fs";
