@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "watch-build": "tsc --watch",
-        "start": "node bin/index.js --archive=connect.garmin.com.har",
+        "start": "node dist/index.js --archive=connect.garmin.com.har",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -17,6 +17,7 @@
     "author": "Giles Roadnight",
     "license": "MIT",
     "dependencies": {
+        "axios": "^0.18.0",
         "command-line-args": "^5.0.2",
         "command-line-usage": "^5.0.5",
         "rxjs": "^6.3.3"
