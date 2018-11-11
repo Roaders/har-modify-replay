@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "start": "node bin/index.js",
+        "watch-build": "tsc --watch",
+        "start": "node bin/index.js --archive=connect.garmin.com.har",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -16,8 +17,14 @@
     "author": "Giles Roadnight",
     "license": "MIT",
     "dependencies": {
+        "command-line-args": "^5.0.2",
+        "command-line-usage": "^5.0.5",
+        "rxjs": "^6.3.3"
+    },
+    "devDependencies": {
+        "@types/command-line-args": "^5.0.0",
         "@types/node": "^10.12.5",
-        "rxjs": "^6.3.3",
+        "@types/command-line-usage": "^5.0.1",
         "typescript": "^3.1.6"
     }
 }
