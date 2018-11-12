@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
+        "prewatch-build": "npm run build",
         "watch-build": "tsc --watch",
         "start": "node dist/index.js --archive=connect.garmin.com.har",
         "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,42 +1,38 @@
 
-import { Request } from "../entities/har";
-import "axios";
+import { Request, NameValue } from "../entities/har";
+import axios, { AxiosRequestConfig } from "axios";
+import { from as observableFrom, Observable } from "rxjs";
+import { mergeMap } from "rxjs/operators";
 
 export function replayRequests(request: Request | Request[]) {
 
     const requests = Array.isArray(request) ? request : [request];
 
-    requests.forEach(r => {
-        console.log(`Replay: ${r.method}: ${r.url}`);
-        console.log(JSON.stringify(r, undefined, 4));
-    });
+    return observableFrom(requests)
+        .pipe(
+            mergeMap(replayRequest)
+        )
 }
 
 function replayRequest(request: Request) {
+    console.log(`replay: ${request.method}: ${request.url}`);
 
-    switch (request.method) {
-        case "GET":
-            axios.get
-            break;
-
-        case "POST":
-            break;
-
-        case "PUT":
-            break;
-
-        case "PATCH":
-            break;
-
-        case "DELETE":
-            break;
-
-        default:
-            ensureCompleteness(request.method);
+    const config: AxiosRequestConfig = {
+        method: request.method,
+        url: request.url,
+        headers: constructHeaderObject(request.headers)
     }
 
+    return observableFrom( axios(config) );
 }
 
-function ensureCompleteness(method: never) {
+function constructHeaderObject(nameValueList: NameValue[]){
+    const headers: {[key: string]: string} = {};
 
+    nameValueList
+        .filter(pair => pair.name.substr(0,1) != ":")
+        .filter(pair => pair.name != "accept-encoding")
+        .forEach(pair => headers[pair.name] = pair.value)
+
+    return headers
 }
